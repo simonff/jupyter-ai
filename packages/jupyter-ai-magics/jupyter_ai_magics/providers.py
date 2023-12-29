@@ -793,7 +793,7 @@ class QianfanProvider(BaseProvider, QianfanChatEndpoint):
 
 
 class GeminiAIProvider(BaseProvider, GoogleGenerativeAI):
-    id = "geming"
+    id = "gemini"
     name = "Gemini"
     models = [
         "gemini-pro",
@@ -805,5 +805,3 @@ class GeminiAIProvider(BaseProvider, GoogleGenerativeAI):
     @classmethod
     def is_api_key_exc(cls, e: Exception):
       return False
-
-
