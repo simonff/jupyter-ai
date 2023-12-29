@@ -25,6 +25,7 @@ from .providers import (
     ChatOpenAINewProvider,
     ChatOpenAIProvider,
     CohereProvider,
+    GeminiAIProvider,
     GPT4AllProvider,
     HfHubProvider,
     OpenAIProvider,
