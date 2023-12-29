@@ -1,4 +1,3 @@
-bar
 import asyncio
 import base64
 import copy
@@ -45,7 +44,7 @@ from langchain.prompts import PromptTemplate
 from langchain.pydantic_v1 import BaseModel, Extra, root_validator
 from langchain.schema import LLMResult
 from langchain.utils import get_from_dict_or_env
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAI
 
 
 class EnvAuthStrategy(BaseModel):
@@ -791,3 +790,20 @@ class QianfanProvider(BaseProvider, QianfanChatEndpoint):
     model_id_key = "model_name"
     pypi_package_deps = ["qianfan"]
     auth_strategy = MultiEnvAuthStrategy(names=["QIANFAN_AK", "QIANFAN_SK"])
+
+
+class GeminiAIProvider(BaseProvider, GoogleGenerativeAI):
+    id = "geming"
+    name = "Gemini"
+    models = [
+        "gemini-pro",
+    ]
+    model_id_key = "model"
+    pypi_package_deps = ["langchain-google-genai"]
+    auth_strategy = EnvAuthStrategy(name="GOOGLE_API_KEY")
+
+    @classmethod
+    def is_api_key_exc(cls, e: Exception):
+      return False
+
+
